@@ -11,7 +11,7 @@ This is the first module in the **Learn Solidity** course by Alchemy. Here, we g
 ---
 
 ### 1. What Is Solidity?
-Solidity is a programming language for creating smart contracts on Ethereum. It borrows ideas from C++, Python, and JavaScript. Because it’s _statically typed_, you must declare the type of each variable.
+Solidity is a programming language for creating smart contracts on Ethereum. It borrows ideas from C++, Python, and JavaScript. Because it’s _statically typed_, you must declare the type of each variable.Many blockchains besides Ethereum (EVM-compatible chains) accept Solidity contracts.
 
 ### 2. Preparing Your Tools
 To write and test contracts, we use Remix IDE:
@@ -22,13 +22,13 @@ To write and test contracts, we use Remix IDE:
 
 ---
 ### 3. Deployment
-  Steps:
-     - Compile Solidity code into bytecode.
-     - Send the bytecode in a transaction to an EVM node.
-     - Node calculates and assigns a new contract address.
- -> Many blockchains besides Ethereum (EVM-compatible chains) accept Solidity contracts.
+Steps
+ - Compile Solidity code into bytecode.
+ - Send the bytecode in a transaction to an EVM node.
+ - Node calculates and assigns a new contract address.
+ 
 
-# Deployment Details
+### Deployment Details
  - Sending bytecode in the data field of a transaction.
  - Leaving the to field empty (signals deployment).
  - The blockchain assigns a home address for the contract.
