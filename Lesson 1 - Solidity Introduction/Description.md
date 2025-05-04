@@ -44,6 +44,7 @@ contract Storage {
 }
 ```
 
+
 - **State Variable**: `number` lives on the blockchain.
 - **Functions**:
   - `store`: writes data.
@@ -52,7 +53,56 @@ contract Storage {
 
 ---
 
-### 4. Core Ideas
+### 4. Storage Slots
+- Variable stored in contract scope allocate storage slot(except for constant)
+- Slots are 32 bytes (0x1 means 0x000000......1)
+- Solidity stores variable contiguously (0x0,0x1,0x2...etc)
+- Reading/writing to storage is relatively expensive to other opcodes
+  
+ ---
+ 
+  ```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Storage {
+    uint256 a = 100; // storage slot 0X0
+    bool c = true; // storage slot 0X1
+
+    constructor() {
+        console.log(a);
+    }
+
+}
+```
+  
+### 5. Visibility keys on function
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Example {
+    function example1() private pure{
+     //private : Call me within this contract
+     //pure : I can not read or write in this storage
+    }
+    function example2() internal view{
+     //internal : Call me within this contract(+ inheritance)
+     //view : I can read from storage not write
+    }
+    function example3() public payable{
+     //public : Call me insisde and outside this contract
+     //payable : Send me some either
+    }
+    function example4() external {
+     //external : Call me from outside this contract
+    }
+
+ }
+
+```
+
+### 6. Core Ideas
 | Concept               | Why It Matters                                    | Example           |
 |-----------------------|---------------------------------------------------|-------------------|
 | State Variables       | Persist data on-chain                            | `uint256 number`  |
