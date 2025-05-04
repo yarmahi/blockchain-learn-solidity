@@ -28,4 +28,7 @@ A snapshot of our journey through [Alchemy’s Learn Solidity course](https://ww
 ![Course Completion](completion.png)
 
 ---
+### Name Mahlet Yared
+### Id ugr/19915/12
+### section 3
 
