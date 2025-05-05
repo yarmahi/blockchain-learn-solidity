@@ -19,16 +19,16 @@ To write and test contracts, we use Remix IDE:
 - No installation needed.
 - Lets you compile and deploy contracts quickly.
 
-
 ---
 ### 3. Deployment
-Steps
+
+#### Steps:
  - Compile Solidity code into bytecode.
  - Send the bytecode in a transaction to an EVM node.
  - Node calculates and assigns a new contract address.
  
 
-### Deployment Details
+#### Deployment Details:
  - Sending bytecode in the data field of a transaction.
  - Leaving the to field empty (signals deployment).
  - The blockchain assigns a home address for the contract.
@@ -58,7 +58,6 @@ contract Storage {
 }
 ```
 
-
 - **State Variable**: `number` lives on the blockchain.
 - **Functions**:
   - `store`: writes data.
@@ -68,26 +67,27 @@ contract Storage {
 ---
 
 ### 5. Storage Slots
+
 - Variable stored in contract scope allocate storage slot(except for constant)
 - Slots are 32 bytes (0x1 means 0x000000......1)
 - Solidity stores variable contiguously (0x0,0x1,0x2...etc)
 - Reading/writing to storage is relatively expensive to other opcodes
   
-|Opcode  |	Name	|      Description	          | Gas |
-|--------|----------|-----------------------------|-----|
-| 0x00	 |STOP	    |  Halts execution	          |  0  |
-| 0x01	 |ADD	    | Addition operation          |  3  |
-| 0x02	 |MUL	    | Multiplication operation	  |  5  |
-| 0x03	 |SUB	    | Subtraction operation	      |  3  |
+| Opcode | Name | Description              | Gas |
+|--------|------|--------------------------|-----|
+| 0x00   | STOP | Halts execution          | 0   |
+| 0x01   | ADD  | Addition operation       | 3   |
+| 0x02   | MUL  | Multiplication operation | 5   |
+| 0x03   | SUB  | Subtraction operation    | 3   |
 
-OP Codes and Gas
+#### OP Codes and Gas:
  - OP Codes: Low-level operations the EVM can perform.
  - Compilation turns high-level Solidity into sequences of OP codes.
  - Example:
  - Adding two integers → ADD OP code used.
  - Solidity compiles to OP codes (e.g., ADD).
 
-Gas and Payment
+#### Gas and Payment:
  - Every OP code consumes a specific amount of gas (e.g., ADD = 3 gas units).
  - Gas is a computational unit, paid in the blockchain’s native currency (e.g., Ether for Ethereum).
  - Gas price fluctuates based on network traffic (“market price”).
