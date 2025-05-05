@@ -11,6 +11,7 @@ This module shows how smart contracts use and interact with Ethereum addresses.
 ---
 
 ### 1. Ethereum Addresses 101
+
 - **Structure:** A 20-byte value, written as a hexadecimal string (e.g. `0xabc...`).
 - **Usage:** Identifies accounts and contracts on Ethereum.
 - **In Solidity:** Use the `address` type to store these values.
@@ -18,16 +19,16 @@ This module shows how smart contracts use and interact with Ethereum addresses.
 ---
 
 ### 2. Message Calls
--Send value and calldata to contracts
--The first message call is the beginning of the transaction (EOA -> contract)
--Each subsequent message call is part of the same transaction (contract -> contract)
--The transaction and any state changes only complete when the initial function call finishes execution
+
+- Send value and calldata to contracts
+- The first message call is the beginning of the transaction (EOA -> contract)
+- Each subsequent message call is part of the same transaction (contract -> contract)
+- The transaction and any state changes only complete when the initial function call finishes execution
 
 ---
 ### Message Call Breakdown
--As i saw message calls can contain gas, value and calldata.
-
--These message values become available as globals in solidity:
+- As i saw message calls can contain gas, value and calldata.
+- These message values become available as globals in solidity:
 - `msg.sender` - who made the last message call
 - `msg.value` - amount in wei sent
 - `msg.data` - calldata
@@ -43,6 +44,7 @@ This module shows how smart contracts use and interact with Ethereum addresses.
 
 
 ### Moving Ether
+
 ```solidity
 address payable recipient = payable(0x123...);
 
@@ -57,18 +59,23 @@ require(success, "Send failed");
 - **send:** Returns `false` on failure—handle with `require`.
 
 ---
+
 ### 3. Revert
+
 - We talk to a contract with message calls
 - A contract can REVERT a call, negating all state changes
 - Each calling contract can choose to handle that success, or REVERT as well
 ---
+
 ### Message Call Revert
+
 - No state changes occur
 - No value is transfered
 - No logs are emitted
 - Gas is still spent
 ---
 ### Revert
+
 Revert can be used with a string revert("Unauthorized") or, better yet:
 
 ```solidity
@@ -84,12 +91,12 @@ contract X {
 }
 ```
 ---
-### 4. Calldata (how to target functions!)
+### 4. Calldata (How to Target Functions!)
 
-- its helpful to remember that Solidity's job is to compile contracts to bytecode
-- Solidity doesnt know about the chain its deployed on
-- if you tell solidity to call an address with calldata, it will do that
-- you do this with both the high-level and low-level syntax
+- It's helpful to remember that Solidity's job is to compile contracts into bytecode.
+- Solidity doesn't know anything about the blockchain it's deployed on.
+- If you tell Solidity to call an `address` with calldata, it will do exactly that.
+- You can do this using both high-level and low-level syntax.
   
 ---
 
